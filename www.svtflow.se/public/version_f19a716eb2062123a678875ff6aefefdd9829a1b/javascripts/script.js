@@ -8391,6 +8391,9 @@ define("modules/search/search", ["jquery", "Class", "play/template/play_template
 				this.searchText = this.$input.val();
 				var e = this.$suggestionsContainer.find(".play-search-suggestions li:first");
 				e.addClass("focused");
+				if(xtra){
+					xtra.loadInfo(e);
+				}
 				this.$input.val(e.find(".jsResultTitle").text())
 			},
 			navigateUp: function (e) {
@@ -8398,6 +8401,9 @@ define("modules/search/search", ["jquery", "Class", "play/template/play_template
 				var t = e.prev();
 				if (t.size() > 0) {
 					t.addClass("focused");
+					if(xtra){
+						xtra.loadInfo(t);
+					}
 					this.$input.val(t.find(".jsResultTitle").text())
 				} else this.resetSearchText()
 			},
@@ -8406,6 +8412,9 @@ define("modules/search/search", ["jquery", "Class", "play/template/play_template
 				if (t.size() > 0) {
 					t.addClass("focused");
 					e.removeClass("focused");
+					if(xtra){
+						xtra.loadInfo(t);
+					}
 					t.find(".jsResultTitleNone").size() > 0 ? this.resetSearchText() : this.$input.val(t.find(".jsResultTitle").text())
 				} else e.removeClass("focused")
 			},
